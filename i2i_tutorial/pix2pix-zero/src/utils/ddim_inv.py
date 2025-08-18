@@ -38,9 +38,11 @@ class DDIMInversion(BasePipeline):
         return reg_loss
     
     def kl_divergence(self, x):
-        _mu = x.mean()
-        _var = x.var()
-        return _var + _mu**2 - 1 - torch.log(_var+1e-7)
+        _mu = # FILL 
+        _var = # FILL 
+
+        kld = # FILL 
+        return kld
 
 
     def __call__(
@@ -118,13 +120,17 @@ class DDIMInversion(BasePipeline):
                             l_ac = self.auto_corr_loss(_var)
                             l_ac.backward()
                             _grad = _var.grad.detach()/num_ac_rolls
-                            e_t = e_t - lambda_ac*_grad
+                            e_t = # FILL # apply lambda_ac coefficient for l_ac 
                     if lambda_kl>0:
-                        _var = torch.autograd.Variable(e_t.detach().clone(), requires_grad=True)
-                        l_kld = self.kl_divergence(_var)
-                        l_kld.backward()
-                        _grad = _var.grad.detach()
-                        e_t = e_t - lambda_kl*_grad
+                        #######################################
+                        ##### Guided inversion with kld loss ##
+                        ##### Hint: Refer to loss_ac part #####
+                        # use l_kl, lambda_kl (coefficient for l_kl)
+                        # FILL 
+                        # FILL (define l_kl)
+                        # FILL 
+                        # FILL
+                        # FILL 
                     e_t = e_t.detach()
                 noise_pred = e_t
 
