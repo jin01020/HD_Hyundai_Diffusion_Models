@@ -1,17 +1,18 @@
-#torch==1.13.1+cu116 
-#torchvision==0.14.1+cu116 
-#--extra-index-url https://download.pytorch.org/whl/cu116
+# For PyTorch with CUDA 11.6 compatibility
+--extra-index-url https://download.pytorch.org/whl/cu116
+torch
+torchvision
 
-huggingface-hub==0.15.1
-accelerate=0.20.3
-diffusers==0.16.1
+# Other dependencies
+accelerate
+diffusers
 einops
-gradio==3.40.1
+gradio
 ipython
 numpy
 opencv-python-headless
 pillow
 psutil
 tqdm
-transformers==4.25.1
+transformers
 salesforce-lavis
